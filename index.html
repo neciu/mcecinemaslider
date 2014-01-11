@@ -20,9 +20,9 @@
             <img src="img/diamond.png"/>
         </li>
 
-        <li>
-            <div id="video" class="flex-video widescreen"></div>
-        </li>
+        <!--<li>-->
+            <!--<div id="video" class="flex-video widescreen"></div>-->
+        <!--</li>-->
 
         <li>
             <img src="img/diamond.png"/>
@@ -65,12 +65,12 @@
 //            player.playVideo();
         }
 
-        function onPlayerStateChange(event) {
-            console.log(event.data);
-            if (event.data == 0) {
-                toggleOrbit();
-            }
-        }
+//        function onPlayerStateChange(event) {
+//            console.log(event.data);
+//            if (event.data == 0) {
+//                toggleOrbit();
+//            }
+//        }
 
         player = new YT.Player('video', {
             height: window.screen.height,
@@ -104,11 +104,11 @@
     $('#mce-orbit').on('after-slide-change.fndtn.orbit', function (event, orbit) {
         console.log(event);
         console.log(orbit);
-        if (orbit.slide_number == 2) {
-            toggleOrbit();
-            player.seekTo(0, true);
-            player.playVideo();
-        }
+//        if (orbit.slide_number == 2) {
+//            toggleOrbit();
+//            player.seekTo(0, true);
+//            player.playVideo();
+//        }
     });
 </script>
 

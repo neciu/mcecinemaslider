@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title></title>
+    <link href="scss/mceslider.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+<div class="container">
+    <ul id="mce-orbit" class="mce-orbit" data-orbit>
+        <li>
+            <img src="img/logo.png"/>
+        </li>
+
+        <li>
+            <img src="img/diamond.png"/>
+        </li>
+
+        <li>
+            <div id="video" class="flex-video widescreen"></div>
+        </li>
+
+        <li>
+            <img src="img/diamond.png"/>
+        </li>
+
+        <li>
+            <img src="img/platinum.png"/>
+        </li>
+
+        <li>
+            <img src="img/organizers.png"/>
+        </li>
+        <li>
+            <img src="img/logo.png"/>
+        </li>
+
+        <li>
+            <img src="img/agenda1.png"/>
+        </li>
+
+        <li>
+            <img src="img/agenda2.png"/>
+        </li>
+    </ul>
+</div>
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.orbit.js"></script>
+<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+
+<script>
+    function toggleOrbit() {
+        $("#mce-orbit").siblings(".orbit-timer").click();
+    }
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        function onPlayerReady(event) {
+//            player.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            console.log(event.data);
+            if (event.data == 0) {
+                toggleOrbit();
+            }
+        }
+
+        player = new YT.Player('video', {
+            height: window.screen.height,
+            width: '100%',
+            videoId: 'sJPYs377u4A',
+            suggestedQuality: 'hd720',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+</script>
+
+
+<script>
+    $(document).foundation({
+                orbit: {
+                    animation: 'slide',
+                    timer_speed: 3000,
+                    pause_on_hover: false,
+                    animation_speed: 500,
+                    navigation_arrows: false,
+                    bullets: false,
+                    slide_number: false
+                }}
+    );
+</script>
+
+<script>
+    $('#mce-orbit').on('after-slide-change.fndtn.orbit', function (event, orbit) {
+        console.log(event);
+        console.log(orbit);
+        if (orbit.slide_number == 2) {
+            toggleOrbit();
+            player.seekTo(0, true);
+            player.playVideo();
+        }
+    });
+</script>
+
+</body>
+
+</html>

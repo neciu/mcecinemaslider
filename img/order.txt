@@ -1,0 +1,11 @@
+logo
+diamond
+movie
+diamond
+platinum
+organizers
+logo
+agenda1
+agenda2
+
+wszystko po 3s
